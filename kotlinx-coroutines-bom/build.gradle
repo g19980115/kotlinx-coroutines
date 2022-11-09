@@ -33,8 +33,6 @@ publishing {
     publications {
         mavenBom(MavenPublication) {
             from components.javaPlatform
-            groupId = 'com.github.g19980115.kotlinx-coroutines'
-            artifactId = 'kotlinx-coroutines-bom'
         }
         // Disable metadata publication
         it.each { pub ->
