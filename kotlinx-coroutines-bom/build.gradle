@@ -4,6 +4,7 @@
 plugins {
     id 'java-platform'
 }
+group = "com.github.g19980115.kotlinx-coroutines"
 
 def name = project.name
 
