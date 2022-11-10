@@ -14,7 +14,7 @@ apply plugin: 'signing'
 def isMultiplatform = project.name == "kotlinx-coroutines-core" || project.name == "kotlinx-coroutines-test"
 def isBom = project.name == "kotlinx-coroutines-bom"
 
-if (!isBom) {
+//if (!isBom) {
     if (project.name == "kotlinx-coroutines-debug") {
         apply plugin: "com.github.johnrengelman.shadow"
     }
@@ -23,9 +23,9 @@ if (!isBom) {
     task javadocJar(type: Jar) {
         archiveClassifier = 'javadoc'
     }
-}
+//}
 
-if (!isMultiplatform && !isBom) {
+if (!isMultiplatform /*&& !isBom*/) {
     // Regular java modules need 'java-library' plugin for proper publication
     apply plugin: 'java-library'
 
@@ -55,7 +55,7 @@ publishing {
         PublishingKt.configureMavenCentralMetadata(pom, project)
         PublishingKt.signPublicationIfKeyPresent(project, it)
         // add empty javadocs
-        if (!isBom && it.name != "kotlinMultiplatform") {
+        if (/*!isBom && */it.name != "kotlinMultiplatform") {
             it.artifact(javadocJar)
         }
 
